@@ -33,7 +33,7 @@ docker exec -it nd029-c2-apache-spark-and-spark-streaming_redis_1 redis-cli
 - Type:
 
 ```
-zrange customer 0 -1
+zrange Customer 0 -1
 ```
 
 - Locate the the customer you created in the output
@@ -111,9 +111,9 @@ The application development team was not able to complete the feature as the gra
 - Save the Spark startup logs for submission with your solution using the commands below:
 
 ```
-docker logs nd029-c2-apache-spark-and-spark-streaming_spark_1 >& ../../spark/logs/spark-master.log
+docker logs spark >& ../../spark/logs/spark-master.log
 
-docker logs nd029-c2-apache-spark-and-spark-streaming_spark_1 >& ../../spark/logs/spark-master.log >& ../../spark/logs/spark-worker.log
+docker logs spark >& ../../spark/logs/spark-master.log >& ../../spark/logs/spark-worker.log
 ```
 
 - Create a new Kafka topic to transmit the complete risk score with birth date, so the data can be viewed in the STEDI application graph

@@ -11,6 +11,27 @@
 version: '3.7'
 
 services:
+
+  akhq:
+    # build:
+    #   context: .
+    image: tchiotludo/akhq
+    environment:
+      AKHQ_CONFIGURATION: |
+        akhq:
+          connections:
+            docker-kafka-server:
+              properties:
+                bootstrap.servers: "kafka:19092"
+              schema-registry:
+                url: "http://schema-registry:8085"
+              connect:
+                - name: "connect"
+                  url: "http://connect:8083"
+    ports:
+      - 8787:8080
+
+
   redis:
     image: redis:6.0.6
     ports:
@@ -24,6 +45,8 @@ services:
       ZOOKEEPER_CLIENT_PORT: "2181"
 
   kafka:
+    hostname: kafka
+    container_name: kafka
     image: confluentinc/cp-kafka:5.5.1
     ports:
       - "9092:9092"
@@ -67,13 +90,15 @@ services:
       REDIS_HOST: redis
       REDIS_PORT: 6379
       REDIS_DB: 0
-      KAFKA_BROKER: kafka:19092
-      KAFKA_RISK_TOPIC: your-topic-here
+      KAFKA_BROKER: "kafka:19092"
+      KAFKA_RISK_TOPIC: "stedi.risk-score.v0"
     depends_on:
       - "kafka"
       - "redis"      
 
   connect:
+    hostname: connect
+    container_name: connect
     image: gcr.io/simulation-images/kafka-connect-redis-source
     ports:
     - "8083:8083"
@@ -102,6 +127,7 @@ services:
     - "redis"
 
   spark:
+    container_name: spark
     image: docker.io/bitnami/spark:3-debian-10
     environment:
       - SPARK_MODE=master
@@ -114,8 +140,10 @@ services:
     volumes:
       - ./:/home/workspace/
       - ./spark/jars:/opt/bitnami/spark/.ivy2 
+      - ./project/starter/sparkpykafkajoin.py:/opt/bitnami/spark/sparkpykafkajoin.py
 
   spark-worker-1:
+    container_name: spark-worker
     image: docker.io/bitnami/spark:3-debian-10
     environment:
       - SPARK_MODE=worker
