@@ -1,0 +1,33 @@
+[38;5;6m [38;5;5m20:56:56.01 [0m
+[38;5;6m [38;5;5m20:56:56.01 [0m[1mWelcome to the Bitnami spark container[0m
+[38;5;6m [38;5;5m20:56:56.01 [0mSubscribe to project updates by watching [1mhttps://github.com/bitnami/bitnami-docker-spark[0m
+[38;5;6m [38;5;5m20:56:56.01 [0mSubmit issues and feature requests at [1mhttps://github.com/bitnami/bitnami-docker-spark/issues[0m
+[38;5;6m [38;5;5m20:56:56.02 [0m
+[38;5;6m [38;5;5m20:56:56.02 [0m[38;5;2mINFO [0m ==> ** Starting Spark setup **
+realpath: /bitnami/spark/conf: No such file or directory
+[38;5;6m [38;5;5m20:56:56.06 [0m[38;5;2mINFO [0m ==> Generating Spark configuration file...
+[38;5;6m [38;5;5m20:56:56.06 [0m[38;5;2mINFO [0m ==> ** Spark setup finished! **
+
+[38;5;6m [38;5;5m20:56:56.09 [0m[38;5;2mINFO [0m ==> ** Starting Spark in master mode **
+starting org.apache.spark.deploy.master.Master, logging to /opt/bitnami/spark/logs/spark--org.apache.spark.deploy.master.Master-1-7d41b3a6d351.out
+Spark Command: /opt/bitnami/java/bin/java -cp /opt/bitnami/spark/conf/:/opt/bitnami/spark/jars/* -Xmx1g org.apache.spark.deploy.master.Master --host 7d41b3a6d351 --port 7077 --webui-port 8080
+========================================
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+22/06/01 20:56:58 INFO Master: Started daemon with process name: 43@7d41b3a6d351
+22/06/01 20:56:58 INFO SignalUtils: Registering signal handler for TERM
+22/06/01 20:56:58 INFO SignalUtils: Registering signal handler for HUP
+22/06/01 20:56:58 INFO SignalUtils: Registering signal handler for INT
+22/06/01 20:56:59 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+22/06/01 20:56:59 INFO SecurityManager: Changing view acls to: spark
+22/06/01 20:56:59 INFO SecurityManager: Changing modify acls to: spark
+22/06/01 20:56:59 INFO SecurityManager: Changing view acls groups to: 
+22/06/01 20:56:59 INFO SecurityManager: Changing modify acls groups to: 
+22/06/01 20:56:59 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(spark); groups with view permissions: Set(); users  with modify permissions: Set(spark); groups with modify permissions: Set()
+22/06/01 20:57:00 INFO Utils: Successfully started service 'sparkMaster' on port 7077.
+22/06/01 20:57:00 INFO Master: Starting Spark master at spark://7d41b3a6d351:7077
+22/06/01 20:57:00 INFO Master: Running Spark version 3.2.1
+22/06/01 20:57:00 INFO Utils: Successfully started service 'MasterUI' on port 8080.
+22/06/01 20:57:00 INFO MasterWebUI: Bound MasterWebUI to 0.0.0.0, and started at http://7d41b3a6d351:8080
+22/06/01 20:57:01 INFO Master: Registering worker 172.27.0.2:42153 with 1 cores, 1024.0 MiB RAM
+22/06/01 20:57:01 INFO Master: I have been elected leader! New state: ALIVE
+22/06/01 20:57:10 INFO Master: Registering worker 172.27.0.2:42153 with 1 cores, 1024.0 MiB RAM
